@@ -44,7 +44,7 @@ export default function Home() {
                 </div>
 
               <div className="flex md:items-center md:justify-center mt-4 md:mt-8">
-                <button className="w-62 md:w-96 px-3 py-2 bg-amber-950 text-amber-100 leading-relaxed text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 hover:py-4 transition-all cursor-pointer">
+                <button className="w-62 md:w-96 px-6 py-3 bg-amber-950 text-amber-100 leading-relaxed text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer">
                   Registrar
                 </button>
               </div>
