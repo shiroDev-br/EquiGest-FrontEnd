@@ -1,14 +1,18 @@
-import AboutNavBar from "../components/about_components/navbar";
+import AboutNavBar from "../../components/about_components/navbar";
+import Image from "next/image";
+import login from "../../assets/login.jpg"
 
 export default function Home() {
   return (
     <div className="flex flex-row min-h-screen justify-center items-center bg-amber-50 px-4">
       <div className="shadow-lg rounded-lg flex flex-col lg:flex-row w-full max-w-[1000px] h-auto lg:h-[600px] overflow-hidden bg-amber-100">
       <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
-          <img
-            src="https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia31007/quais_os_principais_cuidados_com_os_potros_em_crescimento.jpg"
+          <Image
+            src={login}
             alt="mareImage"
             className="w-full h-full object-cover"
+            width={1000}
+            height={1000}
           />
         </div>
 
@@ -44,7 +48,7 @@ export default function Home() {
                 </div>
 
               <div className="flex md:items-center md:justify-center mt-4 md:mt-8">
-                <button className="w-62 md:w-96 px-3 py-2 bg-amber-950 text-amber-100 leading-relaxed text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 hover:py-4 transition-all cursor-pointer">
+                <button className="w-62 md:w-96 px-6 py-3 bg-amber-950 text-amber-100 leading-relaxed text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer">
                   Entrar
                 </button>
               </div>

@@ -1,4 +1,6 @@
-import AboutNavBar from "../components/about_components/navbar";
+import AboutNavBar from "./components/about_components/navbar";
+import Image from "next/image";
+import about from "./assets/about.jpg" 
 
 export default function Home() {
   return (
@@ -6,10 +8,12 @@ export default function Home() {
       <div className="shadow-lg rounded-lg flex flex-col lg:flex-row w-full max-w-[1000px] h-auto lg:h-[600px] overflow-hidden bg-amber-100">
         
         <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
-          <img
-            src="https://blog.abaraujo.com/wp-content/uploads/2019/06/alimenta%C3%A7%C3%A3o-potros-1024x768.jpg"
+          <Image
+            src={about}
             alt="mareImage"
             className="w-full h-full object-cover"
+            width={1000}
+            height={1000}
           />
         </div>
 
