@@ -1,6 +1,5 @@
 import { CheckCircle } from 'lucide-react'
 import Link from 'next/link'
-import SideBar from '../components/sidebar'
 
 export default function PaymentSuccess() {
   return (
@@ -16,8 +15,8 @@ export default function PaymentSuccess() {
               Agora você tem acesso total à nossa plataforma.
             </p>
             <div className="flex gap-4 mt-6">
-              <Link href="/home" className="bg-amber-950 hover:bg-amber-900 text-white font-semibold px-6 py-3 rounded-xl transition-all">
-                Ir para o painel
+              <Link href="/login" className="bg-amber-950 hover:bg-amber-900 text-white font-semibold px-6 py-3 rounded-xl transition-all">
+                Fazer Login
               </Link>
             </div>
           </div>

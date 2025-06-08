@@ -1,11 +1,12 @@
 import AboutNavBar from "../components/about_components/navbar";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="flex flex-row min-h-screen justify-center items-center bg-amber-50 px-4">
       <div className="shadow-lg rounded-lg flex flex-col lg:flex-row w-full max-w-[1000px] h-auto lg:h-[600px] overflow-hidden bg-amber-100">
       <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
-          <img
+          <Image
             src="https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia31007/quais_os_principais_cuidados_com_os_potros_em_crescimento.jpg"
             alt="mareImage"
             className="w-full h-full object-cover"
