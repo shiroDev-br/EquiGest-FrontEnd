@@ -1,5 +1,6 @@
 import AboutNavBar from "../components/about_components/navbar";
 import Image from "next/image";
+import login from "../assets/login.jpg"
 
 export default function Home() {
   return (
@@ -7,9 +8,11 @@ export default function Home() {
       <div className="shadow-lg rounded-lg flex flex-col lg:flex-row w-full max-w-[1000px] h-auto lg:h-[600px] overflow-hidden bg-amber-100">
       <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
           <Image
-            src="https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia31007/quais_os_principais_cuidados_com_os_potros_em_crescimento.jpg"
+            src={login}
             alt="mareImage"
             className="w-full h-full object-cover"
+            width={1000}
+            height={1000}
           />
         </div>
 

@@ -1,5 +1,6 @@
 import AboutNavBar from "../components/about_components/navbar";
 import Image from "next/image";
+import register from "../assets/register.jpg"
 
 export default function Home() {
   return (
@@ -8,9 +9,11 @@ export default function Home() {
         
       <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
           <Image
-            src="https://media.istockphoto.com/id/498994244/pt/foto/%C3%A9gua-com-potro.jpg?s=612x612&w=0&k=20&c=js_dJ4eX-0TkHlVtpA5sPpFZhjiUrevLSIqg-Kf4XkA="
+            src={register}
             alt="mareImage"
             className="w-full h-full object-cover"
+            width={1000}
+            height={1000}
           />
         </div>
 
