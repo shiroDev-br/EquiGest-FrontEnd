@@ -7,9 +7,9 @@ export default function AboutNavBar() {
   const router = useRouter();
 
   const items = [
-    { id: "about", label: "Sobre", path: "/about" },
-    { id: "register", label: "Registrar", path: "/register" },
-    { id: "login", label: "Entrar", path: "/login" },
+    { id: "about", label: "Sobre", path: "/" },
+    { id: "register", label: "Registrar", path: "/auth/register" },
+    { id: "login", label: "Entrar", path: "/auth/login" },
   ];
 
   const handleClick = (path: string) => {

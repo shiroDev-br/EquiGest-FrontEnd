@@ -1,6 +1,6 @@
-import AboutNavBar from "../components/about_components/navbar";
+import AboutNavBar from "./components/about_components/navbar";
 import Image from "next/image";
-import about from "../assets/about.jpg" 
+import about from "./assets/about.jpg" 
 
 export default function Home() {
   return (
