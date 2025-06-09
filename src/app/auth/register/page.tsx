@@ -1,15 +1,15 @@
-"use client"
+"use client";
+
 import AboutNavBar from "../../components/about_components/navbar";
 import Image from "next/image";
 import register from "../../assets/register.jpg";
-import {register_user} from "../../ts/auth/register";
+import RegisterForm from "./components/register_form";
 
 export default function Home() {
 
   return (
     <div className="flex flex-row min-h-screen justify-center items-center bg-amber-50 px-4">
       <div className="shadow-lg rounded-lg flex flex-col lg:flex-row w-full max-w-[1000px] h-auto lg:h-[600px] overflow-hidden bg-amber-100">
-
         <div className="w-full lg:w-1/2 h-[300px] lg:h-full">
           <Image
             src={register}
@@ -32,32 +32,10 @@ export default function Home() {
 
               <hr className="w-full" />
 
-              <div className="w-96 mt-6 flex flex-col gap-4">
-                <input type="text" placeholder="Nome do seu Haras" id="username" className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800" />
-
-                <input type="email" placeholder="E-mail cadastral" id="email" className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800" />
-
-                <input type="text" placeholder="CPF/CNPJ cadastral" id="taxID" className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800" />
-
-                <input type="text" placeholder="Telefone cadastral" id="cellPhone" className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800" />
-
-                <input type="password" placeholder="Senha da sua Conta" id="password" className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800" />
-              </div>
-
-              <div className="flex md:items-center md:justify-center mt-4 md:mt-8">
-                <button
-                  onClick={async () => {
-                    await register_user();
-                  }}
-                  className="w-62 md:w-96 px-6 py-3 bg-amber-950 text-amber-100 text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer"
-                >
-                  Registrar
-                </button>
-              </div>
+              <RegisterForm />
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
