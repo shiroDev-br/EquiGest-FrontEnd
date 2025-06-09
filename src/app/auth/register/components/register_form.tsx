@@ -3,8 +3,10 @@ import { useState } from "react";
 import { register_user } from "@/lib/auth/register";
 import { IRegisterRequestBody } from "@/lib/interfaces/interfaces";
 import FormInput from "../../components/form_input";
+import { redirect } from 'next/navigation'
 
 export default function RegisterForm() {
+
   const [form, setForm] = useState<IRegisterRequestBody>({
     username: "",
     email: "",
@@ -26,6 +28,7 @@ export default function RegisterForm() {
     if (result.success) {
         localStorage.setItem("jwtToken", result.access_token);
         setError(null);
+        redirect("/auth/success")
     } else {
         setError(result.error);
 

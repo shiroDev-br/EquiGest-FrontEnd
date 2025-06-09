@@ -22,7 +22,7 @@ export async function register_user(
         return {success: false, error: errors}
     }
 
-    const sanitizedBody = parsed.data;   
+    const sanitizedBody = parsed.data; 
   
     const response = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/register`, {
       method: "POST",
