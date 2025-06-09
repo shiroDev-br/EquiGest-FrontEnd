@@ -32,6 +32,7 @@ export async function register_user() {
 
     if (response.status == 201){
         localStorage.setItem('jwtToken', result.access_token);
+        window.location.href = '/auth/success'
     }else {
       console.log(result.detail);
     }
