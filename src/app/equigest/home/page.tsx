@@ -11,12 +11,9 @@ export default function Home() {
           </h1>
           <p className="text-amber-900 text-base sm:text-lg md:text-lg leading-relaxed mb-6 text-justify md:text-left">
             🐴 Nosso sistema de controle gestacional de éguas facilita o gerenciamento completo da sua criação, acompanhando todas as etapas importantes.<br /><br />
-            💉 Ele monitora as vacinas e hormônios a serem administrados, prevê a data provável do parto e oferece um controle geral do rebanho, incluindo a quantidade de éguas cadastradas e seu status individual.<br /><br />
+            💉 Ele monitora as vacinas e hormônios a serem administrados, prevê a data provável do parto e oferece um controle geral da tropa, incluindo a quantidade de éguas cadastradas, seu status individual e acompanhamento gráfico.<br /><br />
             ✅ Tudo isso para garantir a saúde e o bom desenvolvimento das suas éguas de forma prática e eficiente.
           </p>
-          <button className="bg-amber-700 text-white py-2 px-8 rounded-full hover:bg-amber-800 transition shadow-md self-center md:self-start">
-            Comece Agora
-          </button>
         </div>
       </div>
     </div>

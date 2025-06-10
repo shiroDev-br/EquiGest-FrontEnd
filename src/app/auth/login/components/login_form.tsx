@@ -1,41 +1,37 @@
 "use client";
 import { useState } from "react";
-import { register_user } from "@/lib/auth/register";
-import { IRegisterRequestBody } from "@/lib/interfaces/interfaces";
+import {login_user} from "@/lib/auth/login"
+import { ILoginRequestBody } from "@/lib/interfaces/interfaces";
 import FormInput from "../../components/form_input";
 import { redirect } from 'next/navigation'
 import {LoadingOverlay} from "../../../components/loading_overlay"
 
-export default function RegisterForm() {
+export default function LoginForm() {
 
-  const [form, setForm] = useState<IRegisterRequestBody>({
+  const [form, setForm] = useState<ILoginRequestBody>({
     username: "",
-    email: "",
     password: "",
-    cpf_cnpj: "",
-    cellphone: "",
   });
-
-  const [error, setError] = useState<string | null>(null);
 
   const [openLoadingOverlay, setOpenLoadingOverlay] = useState(false);
 
-  const handleChange = (field: keyof IRegisterRequestBody, value: string) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (field: keyof ILoginRequestBody, value: string) => {
     setForm(prev => ({ ...prev, [field]: value }));
     if (error) setError(null);
   };
 
-  const handleRegister = async () => {
-    const result = await register_user(form);
+  const handleLogin = async () => {
+    const result = await login_user(form);
     setOpenLoadingOverlay(true);
 
     if (result.success) {
         localStorage.setItem("jwtToken", result.access_token);
         setError(null);
-        redirect("/auth/success")
+        redirect("/equigest/home")
     } else {
         setOpenLoadingOverlay(false);
-
         setError(result.error);
 
         setTimeout(() => {
@@ -64,24 +60,6 @@ export default function RegisterForm() {
         onChange={val => handleChange("username", val)}
       />
       <FormInput
-        type="email"
-        placeholder="E-mail cadastral"
-        value={form.email}
-        onChange={val => handleChange("email", val)}
-      />
-      <FormInput
-        type="text"
-        placeholder="CPF/CNPJ cadastral"
-        value={form.cpf_cnpj}
-        onChange={val => handleChange("cpf_cnpj", val)}
-      />
-      <FormInput
-        type="text"
-        placeholder="Telefone cadastral"
-        value={form.cellphone}
-        onChange={val => handleChange("cellphone", val)}
-      />
-      <FormInput
         type="password"
         placeholder="Senha da sua Conta"
         value={form.password}
@@ -89,10 +67,10 @@ export default function RegisterForm() {
       />
 
       <button
-        onClick={handleRegister}
+        onClick={handleLogin}
         className="w-62 md:w-96 mt-4 px-6 py-3 bg-amber-950 text-amber-100 text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer"
       >
-        Registrar
+        Entrar
       </button>
     </div>
   );

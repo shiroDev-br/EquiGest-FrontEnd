@@ -1,6 +1,7 @@
 import AboutNavBar from "../../components/about_components/navbar";
 import Image from "next/image";
 import login from "../../assets/login.jpg"
+import LoginForm from "./components/login_form";
 
 export default function Home() {
   return (
@@ -29,29 +30,7 @@ export default function Home() {
 
               <hr className="w-full" />
 
-              <div className="w-96 mt-12 flex flex-col gap-4">
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800"
-                        placeholder="Nome do seu Haras"
-                    />
-
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        className="w-62 md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800"
-                        placeholder="Senha da sua Conta"
-                    />
-                </div>
-
-              <div className="flex md:items-center md:justify-center mt-4 md:mt-8">
-                <button className="w-62 md:w-96 px-6 py-3 bg-amber-950 text-amber-100 leading-relaxed text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer">
-                  Entrar
-                </button>
-              </div>
+              <LoginForm/>
             </div>
           </div>
         </div>

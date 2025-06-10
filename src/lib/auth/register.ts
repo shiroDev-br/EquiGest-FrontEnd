@@ -1,4 +1,4 @@
-import {IRegisterRequestBody, IRegisterSuccessResponse, IRegisterErrorResponse} from "../interfaces/interfaces";
+import {IRegisterRequestBody, IAuthSuccessResponse, IRequestErrorResponse} from "../interfaces/interfaces";
 import {registerSchema} from "../schemas/registerSchema";
 
 
@@ -22,21 +22,21 @@ export async function register_user(
         return {success: false, error: errors}
     }
 
-    const sanitizedBody = parsed.data; 
+    const sanitized_body = parsed.data; 
   
     const response = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(sanitizedBody),
+      body: JSON.stringify(sanitized_body),
     });
   
     if (response.status === 201) {
-      const result: IRegisterSuccessResponse = await response.json();
+      const result: IAuthSuccessResponse = await response.json();
       return {success: true, access_token: result.access_token}
     } else {
-      const result: IRegisterErrorResponse = await response.json();
+      const result: IRequestErrorResponse = await response.json();
       return {success: false, error: result.detail}
     }
   }

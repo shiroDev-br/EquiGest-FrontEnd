@@ -6,11 +6,16 @@ export interface IRegisterRequestBody {
     cpf_cnpj: string;
   }
   
-export interface IRegisterSuccessResponse {
+export interface IAuthSuccessResponse {
     access_token: string;
     token_type: string;
   }
   
-export interface IRegisterErrorResponse {
+export interface IRequestErrorResponse {
     detail: string;
   }
+
+export interface ILoginRequestBody {
+    username: string;
+    password: string;
+}
