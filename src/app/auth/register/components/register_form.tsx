@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { register_user } from "@/lib/auth/register";
 import { IRegisterRequestBody } from "@/lib/interfaces/interfaces";
-import FormInput from "../../components/form_input";
+import FormInput from "../../../components/form_input";
 import { redirect } from 'next/navigation'
 import {LoadingOverlay} from "../../../components/loading_overlay"
 
