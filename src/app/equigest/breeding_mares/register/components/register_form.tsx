@@ -18,16 +18,7 @@ export default function RegisterBreedingMareForm ({showError}: RegisterBreedingM
         placeholder="Nome da Égua"
         onChange={val => val}
         />
-        <FormInput
-        type="text"
-        placeholder="Nome do Garanhão"
-        onChange={val => val}
-        />
-        <FormInput
-        type="text"
-        placeholder="Nome do Doador"
-        onChange={val => val}
-        />
+        
         <div>
             <p className="ml-1 text-sm font-medium text-amber-950">
                 Data da Prenhez
