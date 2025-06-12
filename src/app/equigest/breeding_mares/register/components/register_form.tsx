@@ -18,6 +18,7 @@ export default function RegisterBreedingMareForm ({showError}: RegisterBreedingM
         placeholder="Nome da Égua"
         onChange={val => val}
         />
+
         
         <div>
             <p className="ml-1 text-sm font-medium text-amber-950">
@@ -28,7 +29,15 @@ export default function RegisterBreedingMareForm ({showError}: RegisterBreedingM
             placeholder="Data de Prenhez"
             onChange={val => val}
             />
+
+
         </div>
+
+        <FormInput
+        type="text"
+        placeholder="Nome do Garanhão do Produto"
+        onChange={val => val}
+        />
         <button
         className="w-full md:w-full mt-4 px-6 py-3 bg-amber-950 text-amber-100 text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer" onClick={handleSubmit}
         >
