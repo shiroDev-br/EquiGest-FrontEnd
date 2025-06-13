@@ -31,7 +31,7 @@ export async function register_breeding_mare (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization:": `Bearer ${localStorage.getItem("jwtToken")}`,
+            "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`,
         },
         body: JSON.stringify(sanitized_body)
     })
