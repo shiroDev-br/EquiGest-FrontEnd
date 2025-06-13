@@ -1,13 +1,45 @@
 "use client"
+import { useState } from "react";
+
 import FormInput from "@/app/components/form_input";
+
+import {register_breeding_mare} from "@/lib/equigest/breeding_mares/register";
+
+import { 
+    IRegisterBreedingMareBody, 
+} from "@/lib/interfaces/interfaces";
 
 interface RegisterBreedingMareFormProps {
     showError: (message: string) => void;
+    setOpenLoadingOverlay: (value: boolean) => void;
 }
 
-export default function RegisterBreedingMareForm ({showError}: RegisterBreedingMareFormProps){
-    const handleSubmit = () => {
-        showError("Erro ao registrar a matriz.");
+export default function RegisterBreedingMareForm ({
+    showError,
+    setOpenLoadingOverlay
+}: RegisterBreedingMareFormProps){
+    const [form, setForm] = useState<IRegisterBreedingMareBody>({
+        mare_name: "",
+        stallion_name: "",
+        pregnancy_date: null,
+    });
+
+    const handleChange = (field: keyof IRegisterBreedingMareBody, value: any) => {
+        setForm(prev => ({...prev, [field]: value}));
+    }
+
+    const handleSubmit = async () => {
+        const result = await register_breeding_mare(form);
+        setOpenLoadingOverlay(true);
+
+        if (result.success){
+            console.log(result.response);
+        }else {
+
+            setOpenLoadingOverlay(false);
+            showError(result.error)
+        }
+
       };
     return (
     <div className="w-full max-w-md mx-auto  flex flex-col gap-5 bg-amber-200 p-8 rounded-2xl shadow-xl">
@@ -16,7 +48,8 @@ export default function RegisterBreedingMareForm ({showError}: RegisterBreedingM
         <FormInput
         type="text"
         placeholder="Nome da Égua"
-        onChange={val => val}
+        value={form.mare_name}
+        onChange={val => handleChange("mare_name", val)}
         />
 
         
@@ -27,16 +60,20 @@ export default function RegisterBreedingMareForm ({showError}: RegisterBreedingM
             <FormInput
             type="date"
             placeholder="Data de Prenhez"
-            onChange={val => val}
+            value={
+                form.pregnancy_date
+                  ? form.pregnancy_date.toISOString().split("T")[0]
+                  : ""
+            }
+            onChange={val => handleChange("pregnancy_date", new Date(val))}
             />
-
-
         </div>
 
         <FormInput
         type="text"
         placeholder="Nome do Garanhão do Produto"
-        onChange={val => val}
+        value={form.stallion_name}
+        onChange={val => handleChange("stallion_name", val)}
         />
         <button
         className="w-full md:w-full mt-4 px-6 py-3 bg-amber-950 text-amber-100 text-base md:text-lg text-center rounded-lg shadow-md hover:bg-amber-900 transition-all cursor-pointer" onClick={handleSubmit}
