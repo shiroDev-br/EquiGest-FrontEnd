@@ -1,19 +1,15 @@
-import {IRegisterRequestBody, IAuthSuccessResponse, IRequestErrorResponse} from "../interfaces/interfaces";
-import {registerSchema} from "../schemas/registerSchema";
-
-
-type RegisterResult =
-    | { success: true; access_token: string }
-    | { success: false; error: string };
+import {IRegisterRequestBody} from "../interfaces/interfaces";
+import {RegisterSchema} from "../schemas/auth/register_schema";
+import { AuthType } from "../types/auth";
 
 export async function register_user(
     unsanitized_body: IRegisterRequestBody
-): Promise<RegisterResult> {
+): Promise<AuthType> {
     const NEXT_PUBLIC_API_STAGING_URL = process.env.NEXT_PUBLIC_API_STAGING_URL;
     if (!NEXT_PUBLIC_API_STAGING_URL) {
       throw new Error("API URL não definida");
     }
-    const parsed = registerSchema.safeParse(unsanitized_body);
+    const parsed = RegisterSchema.safeParse(unsanitized_body);
 
     if (!parsed.success) {
         const errors = parsed.error.issues
@@ -31,12 +27,12 @@ export async function register_user(
       },
       body: JSON.stringify(sanitized_body),
     });
+    
+    const result = await response.json();
   
     if (response.status === 201) {
-      const result: IAuthSuccessResponse = await response.json();
       return {success: true, access_token: result.access_token}
     } else {
-      const result: IRequestErrorResponse = await response.json();
       return {success: false, error: result.detail}
     }
   }

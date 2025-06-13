@@ -1,19 +1,17 @@
-import {ILoginRequestBody, IAuthSuccessResponse, IRequestErrorResponse} from "../interfaces/interfaces";
-import {loginSchema} from "../schemas/loginSchema";
+import {ILoginRequestBody} from "../interfaces/interfaces";
+import {LoginSchema} from "../schemas/auth/login_schema";
 
-type LoginResult =
-    | { success: true; access_token: string }
-    | { success: false; error: string };
+import { AuthType } from "../types/auth";
 
 export async function login_user(
     unsanitized_body: ILoginRequestBody
-): Promise<LoginResult> {
+): Promise<AuthType> {
     const NEXT_PUBLIC_API_STAGING_URL = process.env.NEXT_PUBLIC_API_STAGING_URL;
     if (!NEXT_PUBLIC_API_STAGING_URL) {
       throw new Error("API URL não definida");
     }
 
-    const parsed = loginSchema.safeParse(unsanitized_body);
+    const parsed = LoginSchema.safeParse(unsanitized_body);
 
     if (!parsed.success) {
         const errors = parsed.error.issues
