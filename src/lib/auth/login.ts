@@ -1,7 +1,9 @@
 import {ILoginRequestBody} from "@/lib/interfaces/interfaces";
-import {LoginSchema} from "@/lib/schemas/auth/login_schema";
 
+import {LoginSchema} from "@/lib/schemas/auth/login_schema";
 import { AuthType } from "@/lib/types/auth";
+
+import { handleApiResponse } from "@/lib/utils/handleResponse";
 
 export async function login_user(
     unsanitized_body: ILoginRequestBody
@@ -28,7 +30,7 @@ export async function login_user(
     form_data.append("grant_type", "password");
 
 
-    const response = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/login`, {
+    const request = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -36,11 +38,12 @@ export async function login_user(
         body: form_data.toString(),
       });
 
-    const result = await response.json();
+    const result = await request.json();
+    const response = handleApiResponse<typeof result>(request.status, result)
+    
+    if (!response.success){
+      return {success: false, error: response.error}
+  }
 
-    if (response.status == 200) {
-        return {success: true, access_token: result.access_token}
-    }else {
-        return {success: false, error: result.detail}
-    }
+    return {success: true, access_token: response.access_token};
 }
