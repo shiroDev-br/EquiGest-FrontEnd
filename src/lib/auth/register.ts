@@ -1,6 +1,6 @@
-import {IRegisterRequestBody} from "../interfaces/interfaces";
-import {RegisterSchema} from "../schemas/auth/register_schema";
-import { AuthType } from "../types/auth";
+import {IRegisterRequestBody} from "@/lib/interfaces/interfaces";
+import {RegisterSchema} from "@/lib/schemas/auth/register_schema";
+import { AuthType } from "@/lib/types/auth";
 
 export async function register_user(
     unsanitized_body: IRegisterRequestBody

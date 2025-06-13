@@ -1,7 +1,7 @@
-import {ILoginRequestBody} from "../interfaces/interfaces";
-import {LoginSchema} from "../schemas/auth/login_schema";
+import {ILoginRequestBody} from "@/lib/interfaces/interfaces";
+import {LoginSchema} from "@/lib/schemas/auth/login_schema";
 
-import { AuthType } from "../types/auth";
+import { AuthType } from "@/lib/types/auth";
 
 export async function login_user(
     unsanitized_body: ILoginRequestBody
