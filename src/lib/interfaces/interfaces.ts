@@ -14,7 +14,7 @@ export interface ILoginRequestBody {
 export interface IRegisterBreedingMareBody {
    mare_name: string;
    stallion_name: string;
-   pregnancy_date: Date;
+   pregnancy_date: Date | null;
 }
 
 export interface IAuthSuccessResponse {
