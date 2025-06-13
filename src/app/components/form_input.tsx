@@ -14,6 +14,7 @@ type Props = {
         onChange={e => onChange(e.target.value)}
         className="w-full md:w-full px-4 py-2 rounded-lg shadow-md border-2 border-amber-950 
           placeholder:text-amber-950/70 focus:outline-none focus:ring-2 focus:ring-amber-800"
+        required
       />
     );
   }
