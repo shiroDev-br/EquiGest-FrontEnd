@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-export const loginSchema = z.object({
+export const LoginSchema = z.object({
   username: z.string()
     .trim()
     .min(1, "Nome é obrigatório"),
