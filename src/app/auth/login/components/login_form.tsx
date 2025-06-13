@@ -27,9 +27,9 @@ export default function LoginForm() {
     setOpenLoadingOverlay(true);
 
     if (result.success) {
-        console.log(result)
         localStorage.setItem("jwtToken", result.access_token ?? "");
         setError(null);
+        redirect("/equigest/home")
     } else {
         setOpenLoadingOverlay(false);
         setError(result.error);
