@@ -22,10 +22,6 @@ export async function register_breeding_mare (
         return {success: false, error: errors}
     }
 
-    const sanitized_body = parsed.data;
-
-    const response = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/mares/create`)
-
     return {success: true, response: {
         'status': 'ok'
     }}
