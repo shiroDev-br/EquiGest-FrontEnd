@@ -44,6 +44,6 @@ export async function login_user(
     if (!response.success){
       return {success: false, error: response.error}
   }
-
-    return {success: true, access_token: response.access_token};
+    console.log(response);
+    return {success: true, access_token: response.response.access_token};
 }
