@@ -1,6 +1,5 @@
 import { 
     IRegisterBreedingMareBody, 
-    IRequestErrorResponse 
 } from "@/lib/interfaces/interfaces";
 
 import { RegisterMareType } from "@/lib/types/mares";
