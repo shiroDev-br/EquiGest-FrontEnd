@@ -30,7 +30,7 @@ export default function RegisterForm() {
     setOpenLoadingOverlay(true);
 
     if (result.success) {
-        localStorage.setItem("jwtToken", result.access_token);
+        localStorage.setItem("jwtToken", result.access_token ?? "");
         setError(null);
         redirect("/auth/success")
     } else {
