@@ -1,14 +1,15 @@
 import { 
-    IRegisterBreedingMareBody, 
+    IRegisterMareBody, 
 } from "@/lib/interfaces/interfaces";
 
 import { RegisterMareType } from "@/lib/types/mares";
-import { RegisterBreedingMareSchema } from "@/lib/schemas/mares/breeding_mare";
+import { RegisterMareSchema } from "@/lib/schemas/mares/mare";
 
 import { handleApiResponse } from "@/lib/utils/handleResponse";
 
-export async function register_breeding_mare (
-    unsanitized_body: IRegisterBreedingMareBody
+export async function register_mare (
+    unsanitized_body: IRegisterMareBody,
+    mare_type: string
 ): Promise<RegisterMareType> {
 
     const NEXT_PUBLIC_API_STAGING_URL = process.env.NEXT_PUBLIC_API_STAGING_URL;
@@ -16,7 +17,7 @@ export async function register_breeding_mare (
       throw new Error("API URL não definida");
     }
 
-    const parsed = RegisterBreedingMareSchema.safeParse(unsanitized_body);
+    const parsed = RegisterMareSchema.safeParse(unsanitized_body);
     if (!parsed.success) {
         const errors = parsed.error.issues
         .map(i => `${String(i.path[0])}: ${i.message}`)
@@ -25,7 +26,7 @@ export async function register_breeding_mare (
     }
 
     const sanitized_body = parsed.data;
-    sanitized_body.mare_type = "HEADQUARTERS"
+    sanitized_body.mare_type = mare_type;
 
     const request = await fetch(`${NEXT_PUBLIC_API_STAGING_URL}/mares/create`, {
         method: "POST",

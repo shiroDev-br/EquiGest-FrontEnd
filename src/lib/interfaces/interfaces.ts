@@ -11,9 +11,10 @@ export interface ILoginRequestBody {
     password: string;
 }
 
-export interface IRegisterBreedingMareBody {
+export interface IRegisterMareBody {
    mare_name: string;
    stallion_name: string;
+   donor_name?: string;
    pregnancy_date: Date | null;
 }
 

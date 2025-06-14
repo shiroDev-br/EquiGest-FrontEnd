@@ -3,10 +3,10 @@ import { useState } from "react";
 
 import FormInput from "@/app/components/form_input";
 
-import {register_breeding_mare} from "@/lib/equigest/breeding_mares/register";
+import {register_mare} from "@/lib/equigest/mares/register";
 
 import { 
-    IRegisterBreedingMareBody, 
+    IRegisterMareBody, 
 } from "@/lib/interfaces/interfaces";
 
 interface RegisterBreedingMareFormProps {
@@ -18,18 +18,18 @@ export default function RegisterBreedingMareForm ({
     showError,
     setOpenLoadingOverlay
 }: RegisterBreedingMareFormProps){
-    const [form, setForm] = useState<IRegisterBreedingMareBody>({
+    const [form, setForm] = useState<IRegisterMareBody>({
         mare_name: "",
         stallion_name: "",
         pregnancy_date: null,
     });
 
-    const handleChange = (field: keyof IRegisterBreedingMareBody, value: any) => {
+    const handleChange = (field: keyof IRegisterMareBody, value: any) => {
         setForm(prev => ({...prev, [field]: value}));
     }
 
     const handleSubmit = async () => {
-        const result = await register_breeding_mare(form);
+        const result = await register_mare(form, "HEADQUARTERS");
         setOpenLoadingOverlay(true);
 
         if (result.success){

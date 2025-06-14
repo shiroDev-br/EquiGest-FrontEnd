@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-export const RegisterBreedingMareSchema = z.object({
+export const RegisterMareSchema = z.object({
     mare_name: z.string()
         .trim(),
 
@@ -8,7 +8,11 @@ export const RegisterBreedingMareSchema = z.object({
         .trim(),
     
     pregnancy_date: z.date(),
-    
+
+    donor_name: z.string().
+        optional().
+        nullable(),
+
     mare_type: z.string().
         optional().
         nullable()
